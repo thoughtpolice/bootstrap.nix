@@ -62,7 +62,7 @@ let
   # import logic
   pkgSource =
     # Default case: a specified package set, located in nixpkgs.json, next to this file.
-    if nixpkgs == null then (
+    if (nixpkgs == null || nixpkgs == "channel:lockfile") then (
       if pathExists lockFile == false
       then throw "Error: you specified 'nixpkgs = null', implying you have a lock file (located in ${toString lockFile}), but it doesn't exist!"
       else
