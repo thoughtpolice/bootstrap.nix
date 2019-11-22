@@ -39,6 +39,10 @@
   # package overrides to all builds.
 , config ? {}
 
+  # The list of Nixpkgs overlays to apply. These are more powerful and flexible
+  # versions of overrides; if you need to adjust a package, use this, not 'config'
+, overlays ? []
+
   # The system to build on. Defaults to the current system double (e.g.
   # 'x86_64-darwin'). Setting this explicitly is only useful if you're
   # interested in doing cross compilation or remote building.
@@ -78,7 +82,7 @@ let
     # Otherwise, this is invalid
     else throw "Invalid nixpkgs configuration for '${toString nixpkgs}'! (try a path, http URL, or 'null')";
 
-  pkgs = import pkgSource { inherit config system; };
+  pkgs = import pkgSource { inherit config system overlays; };
 
   versionInfo = pkgs.lib.splitString "\n" (pkgs.lib.fileContents versionFile);
   basever = builtins.elemAt versionInfo 0;
