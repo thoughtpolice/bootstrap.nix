@@ -7,9 +7,10 @@
 set -e
 
 API="https://api.github.com/repos"
-REPO="nixpkgs-channels"
-BRANCH="nixpkgs-unstable"
-URL="https://github.com/nixos/${REPO}"
+ORG=${ORG:-"nixos"}
+REPO=${REPO:-"nixpkgs-channels"}
+BRANCH=${BRANCH:-"nixpkgs-unstable"}
+URL="https://github.com/${ORG}/${REPO}"
 
 if [[ "x$1" == "x" ]]; then
   echo -n "No revision, so grabbing latest upstream Nixpkgs master commit... "
