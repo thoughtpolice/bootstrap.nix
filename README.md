@@ -43,9 +43,9 @@ The import of `bootstrap.nix` returns an attrset, with the following structure:
 
 ```nix
 {
-  pkgs    = ... # nixpkgs package set
-  version = ... # described in .version
-  relname = ... # described in .version
+  pkgs    = { ... };  # nixpkgs package set
+  version = "...";    # first line of .version
+  relname = "...";    # second line of .version
 }
 ```
 
