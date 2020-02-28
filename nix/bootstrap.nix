@@ -91,7 +91,7 @@ let
   versionInfo = pkgs.lib.splitString "\n" (pkgs.lib.fileContents versionFile);
   basever = builtins.elemAt versionInfo 0;
   vsuffix = pkgs.lib.optionalString (!officialRelease)
-    "+${toString repo.revCount}-g${repo.shortRev}";
+    "+${toString repo.revCount}r${repo.shortRev}";
 
   relname = builtins.elemAt versionInfo 1;
   version = "${basever}${vsuffix}";
