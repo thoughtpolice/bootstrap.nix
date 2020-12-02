@@ -82,7 +82,7 @@ let
     let
       files = builtins.filter (f:
         let ext = builtins.substring (builtins.stringLength f - 4) 4 f;
-        in ext == ".nix"
+        in (builtins.stringLength f > 4) && ext == ".nix"
       ) (builtins.attrNames (builtins.readDir ./overlays));
     in builtins.map (x: import (./. + "/overlays/${x}")) files;
 
