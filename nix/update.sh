@@ -8,7 +8,7 @@ set -e
 
 API="https://api.github.com/repos"
 ORG=${ORG:-"nixos"}
-REPO=${REPO:-"nixpkgs-channels"}
+REPO=${REPO:-"nixpkgs"}
 BRANCH=${BRANCH:-"nixpkgs-unstable"}
 URL="https://github.com/${ORG}/${REPO}"
 
