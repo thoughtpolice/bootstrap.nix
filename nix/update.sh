@@ -18,7 +18,7 @@ SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
   exit 1
 
 if [[ "x$1" == "x" ]]; then
-  echo -n "No revision, so grabbing latest upstream Nixpkgs master commit... "
+  echo -n "No explicit revision given, so using latest commit from '${ORG}/${REPO}@${BRANCH}' ... "
   REV=$(curl -s "${API}/nixos/${REPO}/commits/${BRANCH}" | jq -r '.sha')
   echo "OK, got ${REV:0:6}"
 else
